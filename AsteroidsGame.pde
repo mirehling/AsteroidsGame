@@ -1,5 +1,6 @@
 Spaceship m = new Spaceship();
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 
 
 public void setup() 
@@ -36,6 +37,21 @@ public void draw()
      asteroids.remove(i);
    }
   }
+  for(int i = 0; i < bullets.size(); i++){
+   Bullet b = bullets.get(i); 
+   b.show();
+   if(b.getCenterX() > 500 || b.getCenterX()<0 || b.getCenterY() > 500 || b.getCenterY() < 0){     
+      bullets.remove(i);    
+    }  
+    b.move();
+   for(int j = 0; j < asteroids.size(); j++){
+     Asteroid a = asteroids.get(j);
+     if(dist((float)b.getCenterX(), (float)b.getCenterY(), (float)a.getCenterX(), (float)a.getCenterY()) < 20){
+       asteroids.remove(j);
+       bullets.remove(i);
+   }
+   }
+  }
 }
 public void keyPressed(){
   if(key == 'a'){
@@ -54,6 +70,8 @@ public void keyPressed(){
    m.myCenterX = (Math.random()*500);
    m.myCenterY = (Math.random()*500);
   }
+  if(key == ' '){
+   bullets.add(new Bullet(m)); 
+  }
   
 }
-
