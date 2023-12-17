@@ -5,8 +5,8 @@ class Asteroid extends Floater
     rot = (Math.random()*10)-5;
     myCenterX = (Math.random()*500);
     myCenterY = (Math.random()*500);
-    myXspeed = (Math.random()*10)-5;
-    myYspeed = (Math.random()*10)-5;
+    myXspeed = (Math.random()*8)-4;
+    myYspeed = (Math.random()*8)-4;
     myPointDirection = 0;
     corners = 4; 
     xCorners = new int[corners]; 
